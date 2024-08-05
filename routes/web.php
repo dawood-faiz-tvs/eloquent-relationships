@@ -14,5 +14,13 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $firstUser = \App\Models\User::first();
+    $firstTag = \App\Models\Tag::first();
+
+    $post = $firstUser->posts()->create([
+        'title' => 'Post Title',
+        'body' => 'Post Body'
+    ]);
+
+    $post->tags()->attach($firstTag);
 });
