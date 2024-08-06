@@ -29,6 +29,8 @@ class UserFactory extends Factory
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
+            'political_affiliation_id' => \App\Models\PoliticalAffiliation::factory(),
+            'country_id' => \App\Models\Country::factory()
         ];
     }
 
