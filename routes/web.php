@@ -24,3 +24,14 @@ Route::get('/', function () {
 
     $post->tags()->attach($firstTag);
 });
+
+Route::get('likables', function () {
+    $firstUser = \App\Models\User::first();
+
+    $firstPost = $firstUser->posts()->create([
+        'title' => 'Post Title',
+        'body' => 'Post Body'
+    ]);
+
+    $firstPost->like($firstUser);
+});
